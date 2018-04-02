@@ -8,6 +8,6 @@ public class FindDistance {
         Point A = new Point(1.5,2.5);
         Point B = new Point(-0.5,-2.0);
         System.out.println("Расстояние между точками А и В равно "
-                +Point.distance(A,B) );
+                + A.distance(B) );
     }
 }
