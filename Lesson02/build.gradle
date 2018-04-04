@@ -1,6 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'application'
-mainClassName = "JAVA_TEST.Sandbox.FindDistance"
+mainClassName = "JAVA_TEST.Lesson02.Lesson2"
 
 repositories {
     mavenCentral()
