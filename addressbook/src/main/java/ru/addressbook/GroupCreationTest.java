@@ -17,16 +17,16 @@ public class GroupCreationTest {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true)
         .setBinary("C:/Program Files (x86)/Mozilla FirefoxESR/firefox.exe"));
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    }
-    
-    @Test
-    public void Test() {
         wd.get("http://localhost/addressbook/");
         wd.findElement(By.name("user")).click();
         wd.findElement(By.name("user")).sendKeys("Admin");
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+    }
+    
+    @Test
+    public void testGroupCreation() {
         wd.findElement(By.linkText("groups")).click();
         wd.findElement(By.xpath("//div[@id='content']/form/input[4]")).click();
         wd.findElement(By.name("group_name")).click();
