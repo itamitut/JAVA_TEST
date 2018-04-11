@@ -1,7 +1,6 @@
 package ru.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import ru.addressbook.model.ContactData;
@@ -17,14 +16,7 @@ public class ApplicationManager {
     private  GroupHelper groupHelper ;
     private SessionHelper sessionHelper;
 
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
+
 
     public void init() {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true)
@@ -36,8 +28,6 @@ public class ApplicationManager {
         sessionHelper = new SessionHelper(wd);
         sessionHelper.login("Admin", "secret");
     }
-
-
 
     public void stop() {
         wd.quit();
