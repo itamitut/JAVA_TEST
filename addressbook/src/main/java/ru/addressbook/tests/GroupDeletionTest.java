@@ -1,8 +1,6 @@
 package ru.addressbook.tests;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-import ru.addressbook.model.GroupData;
 
 /**
  * Created by Сергей on 12.04.2018.

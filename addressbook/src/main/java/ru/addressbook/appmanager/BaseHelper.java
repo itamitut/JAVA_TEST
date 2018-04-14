@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import javax.xml.xpath.XPath;
+
 /**
  * Created by Сергей on 11.04.2018.
  */
@@ -31,4 +33,7 @@ public class BaseHelper {
             return false;
         }
     }
+
+    public void selectContact() {
+        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();}
 }
