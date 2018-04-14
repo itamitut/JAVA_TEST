@@ -7,10 +7,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * Created by Сергей on 11.04.2018.
  */
-public class HelperBase {
+public class BaseHelper {
     protected FirefoxDriver wd;
 
-    public HelperBase(FirefoxDriver wd) {
+    public BaseHelper(FirefoxDriver wd) {
         this.wd =wd;
     }
 

@@ -7,7 +7,7 @@ import ru.addressbook.model.GroupData;
 /**
  * Created by Сергей on 11.04.2018.
  */
-public class GroupHelper extends HelperBase{
+public class GroupHelper extends BaseHelper {
 
     public GroupHelper(FirefoxDriver wd) {
         super(wd);

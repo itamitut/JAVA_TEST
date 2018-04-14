@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * Created by Сергей on 11.04.2018.
  */
-public class SessionHelper extends HelperBase{
+public class SessionHelper extends BaseHelper {
 
     public void login(String username, String password) {
         type(By.name("user"), username);
