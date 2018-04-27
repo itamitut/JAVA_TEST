@@ -1,5 +1,6 @@
 package ru.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.addressbook.model.ContactData;
 
@@ -14,12 +15,15 @@ public class ContactModificationTest extends TestBase {
             app.getContactHelper().createContact();
             app.getNavigationHelper().goToHomePage();
         }
+        int before = app.getGroupHelper().getContactCount();
         app.getContactHelper().selectContact();
         app.getContactHelper().editContact();
-        app.getContactHelper().fillNewContact(new ContactData("Ulia","Olegovna","Frolova","yuric",
+        app.getContactHelper().fillNewContact(new ContactData("Tom","Olegovna","Frolova","yuric",
                 "Mr","Cisco","Avenue","84955463217","8916549809","i@yandex.ru","friend of mine", null ),false);
         app.getContactHelper().updateContact();
         app.getNavigationHelper().goToHomePage();
+        int after = app.getGroupHelper().getContactCount();
+        Assert.assertEquals(after, before);
     }
 
 
