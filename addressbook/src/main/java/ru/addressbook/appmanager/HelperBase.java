@@ -15,16 +15,16 @@ public class HelperBase {
     protected WebDriver wd;
 
     public HelperBase(WebDriver wd) {
-        this.wd =wd;
+        this.wd = wd;
     }
 
     protected void click(By locator) {
-        wd.findElement(locator).click();
+        wd.findElement( locator ).click();
     }
 
     protected void type(By locator, String text) {
-        click(locator);
-        if(text != null) {
+        click( locator );
+        if (text != null) {
             String existingText = wd.findElement( locator ).getAttribute( "value" );
             if (!text.equals( existingText )) {
                 wd.findElement( locator ).clear();
@@ -32,7 +32,8 @@ public class HelperBase {
             }
         }
     }
-    public  boolean isAlertPresent() {
+
+    public boolean isAlertPresent() {
         try {
             wd.switchTo().alert();
             return true;
@@ -43,13 +44,11 @@ public class HelperBase {
 
     public boolean isElementPresent(By locator) {
         try {
-            wd.findElement(locator);
-            return true;}
-        catch (Exception e) {
+            wd.findElement( locator );
+            return true;
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public void selectContact() {
-        wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();}
 }

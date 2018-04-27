@@ -8,7 +8,7 @@ import ru.addressbook.model.GroupData;
 public class ContactCreationTest extends TestBase{
 
     @Test
-    public void ContactCreationTest() {
+    public void contactCreationTest() {
         app.getNavigationHelper().goToHomePage();
         int before = app.getGroupHelper().getContactCount();
         app.getContactHelper().initContactCreation();
