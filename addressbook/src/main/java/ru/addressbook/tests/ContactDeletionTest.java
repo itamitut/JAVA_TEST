@@ -2,6 +2,9 @@ package ru.addressbook.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.addressbook.model.ContactData;
+
+import java.util.List;
 
 /**
  * Created by Сергей on 14.04.2018.
@@ -13,12 +16,13 @@ public class ContactDeletionTest extends TestBase {
         if(! app.getContactHelper().isThereAContact()){
             app.getContactHelper().createContact();
         }
-        int before = app.getGroupHelper().getContactCount();
-        app.getContactHelper().selectContact(before-1);
-        app.getContactHelper().deleteContact();
+        List<ContactData> before = app.getContactHelper().getContactList();
+        app.getContactHelper().deleteContact(before.size()-1);
         app.getNavigationHelper().closeAlert();
         app.goToHomePage();
-        int after = app.getGroupHelper().getContactCount();
-        Assert.assertEquals(after, before-1);
+        List<ContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(after.size(), before.size()-1);
+        before.remove(before.size()-1);
+        Assert.assertEquals(after, before);
     }
 }

@@ -3,9 +3,14 @@ package ru.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.addressbook.model.ContactData;
+import ru.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Сергей on 12.04.2018.
@@ -46,15 +51,18 @@ public class ContactHelper extends HelperBase {
     public void selectContact(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
-    public void deleteContact() {
-        wd.findElement(By.xpath("//div[@id='content']/form[2]/div[2]/input")).click();
+    public void deleteContact(int index) {
+        selectContact( index);
+        wd.findElement(By.cssSelector("input[value=Delete]")).click();
     }
 
-    public void editContact() {
-        wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")).click();
+    public void editContact(int index) {
+        List<WebElement> edits = wd.findElements(By.cssSelector("img[title=Edit]"));
+        edits.get(index).click();
     }
     public void submitNewContact() {
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+        List<WebElement> submits = wd.findElements(By.cssSelector("input[name=submit]"));
+        submits.get(1).click();
     }
     public void updateContact() {
         click(By.name("update"));
@@ -65,5 +73,17 @@ public class ContactHelper extends HelperBase {
         fillNewContact(new ContactData("Robert","Stepanovich","Zizi","yuric",
                 "Mr","Cisco","Avenue","84955463217","8916549809","i@yandex.ru","friend of mine", "test1" ),true);
         submitNewContact();
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<>();
+        List<WebElement> rows = wd.findElements(By.cssSelector("tr[name=entry]"));
+
+        for(WebElement row : rows){
+            ContactData contact = new ContactData(row.findElement(By.xpath("td[3]")).getText(), row.findElement(By.xpath("td[2]")).getText(), null);
+            contacts.add(contact);
+        }
+        return contacts;
+
     }
 }
