@@ -5,22 +5,19 @@ import org.testng.annotations.Test;
 import ru.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupCreationTest extends TestBase{
 
     @Test
     public void testGroupCreation() {
-        app.goToGroupPage();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
-        app.getGroupHelper().initGroupCreation();
-        GroupData group = new GroupData("test7",  null, null );
-        app.getGroupHelper().fillGroupForm(group);
-        app.getGroupHelper().submitGroupCreation();
-        app.getGroupHelper().returnToGroupPage();
-        List<GroupData> after = app.getGroupHelper().getGroupList();
+        app.goTo().groupPage();
+        List<GroupData> before = app.group().list();
+        GroupData group = new GroupData("test8",  null, null );
+        app.group().create( group );
+        List<GroupData> after = app.group().list();
         Assert.assertEquals(after.size(), before.size()+1);
+
         before.add(group);
         Comparator<? super GroupData> byId = Comparator.comparingInt( GroupData::getId );
         before.sort(byId);

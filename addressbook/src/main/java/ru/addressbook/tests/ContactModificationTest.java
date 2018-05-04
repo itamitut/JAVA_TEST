@@ -11,20 +11,21 @@ import java.util.List;
  * Created by Сергей on 14.04.2018.
  */
 public class ContactModificationTest extends TestBase {
-    @Test
+    @Test(enabled = false)
     public void contactModificationTest(){
-        app.getNavigationHelper().goToHomePage();
-        if(! app.getContactHelper().isThereAContact()){
-            app.getContactHelper().createContact();
-            app.getNavigationHelper().goToHomePage();
+        app.goTo().homePage();
+        if(app.contact().list().size() == 0){
+            ContactData contact  = new ContactData("Имя","Фамилия", "test1" );
+            app.contact().create(contact);
+            app.goTo().homePage();
         }
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().editContact(before.size()-1);
+        List<ContactData> before = app.contact().list();
+        app.contact().editContact(before.size()-1);
         ContactData contact = new ContactData("Имя","Фамилия", "test1" );
-        app.getContactHelper().fillNewContact(contact,false);
-        app.getContactHelper().updateContact();
-        app.getNavigationHelper().goToHomePage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.contact().fillNewContact(contact,false);
+        app.contact().updateContact();
+        app.goTo().homePage();
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size());
         before.remove(before.size()-1);
         before.add(contact);

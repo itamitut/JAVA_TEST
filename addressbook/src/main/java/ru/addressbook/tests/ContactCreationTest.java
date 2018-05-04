@@ -3,24 +3,20 @@ package ru.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.addressbook.model.ContactData;
-import ru.addressbook.model.GroupData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTest extends TestBase{
 
-    @Test
+    @Test(enabled = false)
     public void contactCreationTest() {
-        app.getNavigationHelper().goToHomePage();
-        List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().initContactCreation();
+        app.goTo().homePage();
+        List<ContactData> before = app.contact().list();
         ContactData contact  = new ContactData("Имя","Фамилия", "test1" );
-        app.getContactHelper().fillNewContact(contact, true);
-        app.getContactHelper().submitNewContact();
-        app.getNavigationHelper().goToHomePage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.contact().create( contact );
+        app.goTo().homePage();
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size()+1);
         before.add(contact);
 
@@ -35,5 +31,7 @@ public class ContactCreationTest extends TestBase{
         after.sort(lastAndFirstNameComp);
         Assert.assertEquals(after, before);
     }
+
+
 
 }

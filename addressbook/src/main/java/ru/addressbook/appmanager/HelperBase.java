@@ -12,7 +12,7 @@ import javax.xml.xpath.XPath;
  * Created by Сергей on 11.04.2018.
  */
 public class HelperBase {
-    protected WebDriver wd;
+    public WebDriver wd;
 
     public HelperBase(WebDriver wd) {
         this.wd = wd;

@@ -68,14 +68,13 @@ public class ContactHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void createContact() {
+    public void create(ContactData contact) {
         initContactCreation();
-        fillNewContact(new ContactData("Robert","Stepanovich","Zizi","yuric",
-                "Mr","Cisco","Avenue","84955463217","8916549809","i@yandex.ru","friend of mine", "test1" ),true);
+        fillNewContact(contact, true);
         submitNewContact();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> rows = wd.findElements(By.cssSelector("tr[name=entry]"));
 
