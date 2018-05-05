@@ -28,18 +28,19 @@ public class ContactHelper extends HelperBase {
 
     public void fillNewContact(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
-        type(By.name("middlename"), contactData.getMiddlename());
+//        type(By.name("middlename"), contactData.getMiddlename());
         type(By.name("lastname"), contactData.getLastname());
-        type(By.name("nickname"), contactData.getNickname());
-        type(By.name("title"), contactData.getTitle());
-        type(By.name("company"), contactData.getCompany());
-        type(By.name("address"), contactData.getAddress());
-        type(By.name("home"), contactData.getHome());
-        type(By.name("mobile"), contactData.getMobile());
-        type(By.name("email"), contactData.getEmail());
-        type(By.name("notes"), contactData.getNotes());
+//        type(By.name("nickname"), contactData.getNickname());
+//        type(By.name("title"), contactData.getTitle());
+//        type(By.name("company"), contactData.getCompany())
+//       type(By.name("address"), contactData.getAddress());
+//       type(By.name("home"), contactData.getHome());
+//        type(By.name("mobile"), contactData.getMobile());
+//        type(By.name("email"), contactData.getEmail());
+ //       type(By.name("notes"), contactData.getNotes());
         if(creation){
-            new Select( wd.findElement( By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            new Select( wd.findElement( By.name("new_group"))).selectByVisibleText("test1");
+            //contactData.getGroup()
         } else {
             Assert.assertFalse( isElementPresent( By.name("new_group")));
         }
@@ -79,7 +80,8 @@ public class ContactHelper extends HelperBase {
         List<WebElement> rows = wd.findElements(By.cssSelector("tr[name=entry]"));
 
         for(WebElement row : rows){
-            ContactData contact = new ContactData(row.findElement(By.xpath("td[3]")).getText(), row.findElement(By.xpath("td[2]")).getText(), null);
+            ContactData contact = new ContactData().withFirstname(row.findElement(By.xpath("td[3]")).getText())
+                    .withLastname(row.findElement(By.xpath("td[2]")).getText());
             contacts.add(contact);
         }
         return contacts;

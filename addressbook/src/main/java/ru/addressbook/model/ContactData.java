@@ -1,97 +1,56 @@
 package ru.addressbook.model;
 
 public class ContactData {
-    private final String firstname;
-    private final String middlename;
-    private final String lastname;
-    private final String nickname;
-    private final String title;
-    private final String company;
-    private final String address;
-    private final String home;
-    private final String mobile;
-    private final String email;
-    private final String notes;
-    private final String group;
-
-    public ContactData(String firstname, String middlename, String lastname, String nickname, String title, String company, String address, String home, String mobile, String email, String notes, String group) {
+    private  String firstname;
+    private  String middlename;
+    private  String lastname;
+    private  String nickname;
+    private  String title;
+    private  String company;
+    private  String address;
+    private  String home;
+    private  String mobile;
+    private  String email;
+    private  String notes;
+    private  String group;
+    
+    public ContactData withFirstname(String firstname) {
         this.firstname = firstname;
+        return this;}
+    public ContactData withMiddlename(String middlename) {
         this.middlename = middlename;
+        return this;}
+    public ContactData withLastname(String lastname) {
         this.lastname = lastname;
+        return this;}
+    public ContactData withNickname(String nickname) {
         this.nickname = nickname;
+        return this;}
+    public ContactData withTitle(String title) {
         this.title = title;
+        return this;}
+    public ContactData withCompany(String company) {
         this.company = company;
+        return this;}
+    public ContactData withAddress(String address) {
         this.address = address;
+        return this;}
+    public ContactData withHome(String home) {
         this.home = home;
+        return this;}
+    public ContactData withMobile(String mobile) {
         this.mobile = mobile;
+        return this;}
+    public ContactData withEmail(String email) {
         this.email = email;
+        return this;}
+    public ContactData withNotes(String notes) {
         this.notes = notes;
+        return this;}
+    public ContactData withGroup(String group) {
         this.group = group;
-    }
+        return this;}
 
-    public ContactData(String firstname, String lastname, String group) {
-        this.firstname = firstname;
-        this.middlename = null;
-        this.lastname = lastname;
-        this.nickname = null;
-        this.title = null;
-        this.company = null;
-        this.address = null;
-        this.home = null;
-        this.mobile = null;
-        this.email = null;
-        this.notes = null;
-        this.group = group;
-    }
-
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getMiddlename() {
-        return middlename;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getHome() {
-        return home;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public String getGroup() {
-        return group;
-    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,5 +76,34 @@ public class ContactData {
                 ", lastname='" + lastname + '\'' +
                 '}';
     }
+
+    public String getFirstname() {
+        return firstname;}
+    public String getMiddlename() {
+        return middlename;}
+        public String getLastname() {
+        return lastname;}
+    public String getNickname() {
+        return nickname;}
+    public String getTitle() {
+        return title;}
+    public String getCompany() {
+        return company;}
+    public String getAddress() {
+        return address;}
+    public String getHome() {
+        return home;}
+    public String getMobile() {
+        return home;}
+    public String getEmail() {
+        return email;}
+    public String getNotes() {
+        return home;}
+    public String getGroup() {
+        return firstname;}
+
+
+
+
 
 }

@@ -10,11 +10,11 @@ import java.util.List;
  * Created by Сергей on 14.04.2018.
  */
 public class ContactDeletionTest extends TestBase {
-    @Test(enabled = false)
+    @Test   //(enabled = false)
     public void contactDeletionTest() {
         app.goTo().homePage();
         if(app.contact().list().size() == 0){
-            ContactData contact  = new ContactData("Имя","Фамилия", "test1" );
+            ContactData contact  = new ContactData().withFirstname("Имя" ).withLastname("Фамилия");
             app.contact().create(contact);
         }
         List<ContactData> before = app.contact().list();
