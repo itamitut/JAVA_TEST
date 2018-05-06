@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.addressbook.model.ContactData;
+import ru.addressbook.model.Contacts;
 import ru.addressbook.model.GroupData;
 
 import java.util.ArrayList;
@@ -40,27 +41,12 @@ public class ContactHelper extends HelperBase {
  //       type(By.name("notes"), contactData.getNotes());
         if(creation){
             new Select( wd.findElement( By.name("new_group"))).selectByVisibleText("test1");
-            //contactData.getGroup()
+            contactData.getGroup();
         } else {
             Assert.assertFalse( isElementPresent( By.name("new_group")));
         }
-
 }
-    public boolean isThereAContact() {
-        return isElementPresent(By.name("selected[]"));
-    }
-    public void selectContact(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
-    }
-    public void deleteContact(int index) {
-        selectContact( index);
-        wd.findElement(By.cssSelector("input[value=Delete]")).click();
-    }
 
-    public void editContact(int index) {
-        List<WebElement> edits = wd.findElements(By.cssSelector("img[title=Edit]"));
-        edits.get(index).click();
-    }
     public void submitNewContact() {
         List<WebElement> submits = wd.findElements(By.cssSelector("input[name=submit]"));
         submits.get(1).click();
@@ -74,7 +60,6 @@ public class ContactHelper extends HelperBase {
         fillNewContact(contact, true);
         submitNewContact();
     }
-
     public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> rows = wd.findElements(By.cssSelector("tr[name=entry]"));
@@ -85,6 +70,37 @@ public class ContactHelper extends HelperBase {
             contacts.add(contact);
         }
         return contacts;
+    }
+    public Contacts all() {
+        Contacts contacts = new Contacts();
+        List<WebElement> rows = wd.findElements( By.cssSelector( "tr[name=entry]" ) );
+
+        for (WebElement row : rows) {
+            ContactData contact = new ContactData().withId(Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value")))
+                    .withFirstname(row.findElement(By.xpath("td[3]")).getText())
+                    .withLastname(row.findElement(By.xpath("td[2]")).getText());
+            contacts.add( contact );
+        }
+        return contacts;
+    }
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
+        wd.findElement(By.cssSelector("input[value=Delete]")).click();
+    }
+
+    public void selectContactById(int id) {
+        wd.findElement( By.cssSelector("input[value='"+id+"']")).click();
+    }
+    //Находим строку модифицируемого контакта по id и кликаем Edit:
+    public void initModification(ContactData contact) {
+        wd.findElement(By.cssSelector("a[href='edit.php?id="+contact.getId()+"']")).click();
+    }
+    public void modify(ContactData modifiedContact, ContactData contact) {
+        initModification(modifiedContact);
+        fillNewContact(contact,false);
+        updateContact();
 
     }
 }
+
+

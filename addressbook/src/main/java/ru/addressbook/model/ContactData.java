@@ -1,6 +1,11 @@
 package ru.addressbook.model;
 
 public class ContactData {
+
+
+
+
+    private int id = Integer.MAX_VALUE;
     private  String firstname;
     private  String middlename;
     private  String lastname;
@@ -13,7 +18,10 @@ public class ContactData {
     private  String email;
     private  String notes;
     private  String group;
-    
+
+
+    public ContactData withId(int id) {this.id = id;
+        return this;}
     public ContactData withFirstname(String firstname) {
         this.firstname = firstname;
         return this;}
@@ -76,7 +84,7 @@ public class ContactData {
                 ", lastname='" + lastname + '\'' +
                 '}';
     }
-
+    public int getId() {return id;}
     public String getFirstname() {
         return firstname;}
     public String getMiddlename() {
@@ -101,8 +109,6 @@ public class ContactData {
         return home;}
     public String getGroup() {
         return firstname;}
-
-
 
 
 
