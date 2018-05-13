@@ -6,6 +6,8 @@ import ru.addressbook.model.GroupData;
 
 import java.util.Set;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.testng.Assert.assertEquals;
 
 /**
@@ -30,7 +32,6 @@ public class GroupModificationTest extends TestBase {
         app.group().modify(group);
         Set<GroupData> after = app.group().all();
         assertEquals(after.size(), before.size());
-
         before.remove(modifiedGroup);
         before.add(group);
 /*      Cравнение упорядоченных списков:
@@ -38,6 +39,8 @@ public class GroupModificationTest extends TestBase {
         before.sort(byId);
         after.sort(byId);
         Assert.assertEquals(before,after);  */
+        assertThat(after, equalTo(before));
     }
+
 
 }

@@ -34,7 +34,9 @@ public class GroupHelper extends HelperBase {
         type(By.name("group_header"), groupData.getHeader());
         type(By.name("group_footer"), groupData.getFooter());
     }
-
+    public int count() {
+        return wd.findElements(By.name("selected[]")).size();
+    }
     public void initGroupCreation() {click(By.name("new"));}
     public void deleteSelectedGroup() {
         click(By.name("delete"));
@@ -46,6 +48,7 @@ public class GroupHelper extends HelperBase {
         fillGroupForm(group);
         submitGroupCreation();
         returnToGroupPage();
+        groupCash = null;
     }
 
     public void modify( GroupData group) {
@@ -54,6 +57,7 @@ public class GroupHelper extends HelperBase {
         fillGroupForm(group);
         submitGroupModification();
         returnToGroupPage();
+        groupCash = null;
     }
 
     public List<GroupData> list() {
@@ -66,20 +70,26 @@ public class GroupHelper extends HelperBase {
          }
         return groups;
     }
+    public Groups groupCash = null;
+//Создание множества с кешированием
     public Groups all() {
-        Groups groups = new Groups();
+        if (groupCash != null){
+            return new Groups(groupCash);
+        }
+        groupCash = new Groups();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
         for(WebElement element : elements){
             String name = element.getText();
             int id = Integer.parseInt( element.findElement(By.tagName("input")).getAttribute("value") );
-            groups.add(new GroupData().withId(id).withName(name));
+            groupCash.add(new GroupData().withId(id).withName(name));
         }
-        return groups;
+        return new Groups(groupCash);
     }
 
     public void delete(GroupData group) {
         selectGroupById(group.getId());
         deleteSelectedGroup();
+        groupCash = null;
         returnToGroupPage();
     }
 

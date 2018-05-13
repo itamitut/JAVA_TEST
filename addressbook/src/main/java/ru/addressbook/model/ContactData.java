@@ -13,9 +13,14 @@ public class ContactData {
     private  String title;
     private  String company;
     private  String address;
-    private  String home;
-    private  String mobile;
+    private  String allPhones;
+    private  String homePhone;
+    private  String mobilePhone;
+    private  String workPhone;
+    private  String allEmails;
     private  String email;
+    private  String email2;
+    private  String email3;
     private  String notes;
     private  String group;
 
@@ -43,14 +48,29 @@ public class ContactData {
     public ContactData withAddress(String address) {
         this.address = address;
         return this;}
-    public ContactData withHome(String home) {
-        this.home = home;
+    public ContactData withAllPhones(String allPhones) {
+        this.allPhones = allPhones;
         return this;}
-    public ContactData withMobile(String mobile) {
-        this.mobile = mobile;
+    public ContactData withPhoneHome(String homePhone) {
+        this.homePhone = homePhone;
+        return this;}
+    public ContactData withMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+        return this;}
+    public ContactData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
         return this;}
     public ContactData withEmail(String email) {
         this.email = email;
+        return this;}
+    public ContactData withEmail2(String email) {
+        this.email2 = email;
+        return this;}
+    public ContactData withEmail3(String email) {
+        this.email3 = email;
+        return this;}
+    public ContactData withAllEmails(String email) {
+        this.allEmails = email;
         return this;}
     public ContactData withNotes(String notes) {
         this.notes = notes;
@@ -99,17 +119,25 @@ public class ContactData {
         return company;}
     public String getAddress() {
         return address;}
-    public String getHome() {
-        return home;}
-    public String getMobile() {
-        return home;}
+    public String getAllPhones() {
+        return allPhones;}
+    public String getHomePhone() {
+        return homePhone;}
+    public String getMobilePhone() {
+        return mobilePhone;}
+    public String getWorkPhone() {
+        return workPhone;}
     public String getEmail() {
         return email;}
+    public String getEmail2() {
+        return email2;}
+    public String getEmail3() {
+        return email3;}
+    public String getAllEmails() {
+        return allEmails;}
     public String getNotes() {
-        return home;}
+        return notes;}
     public String getGroup() {
-        return firstname;}
-
-
+        return group;}
 
 }

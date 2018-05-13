@@ -16,13 +16,15 @@ public class ContactModificationTest extends TestBase {
     public void contactModificationTest(){
         app.goTo().homePage();
         if(app.contact().all().size() == 0){
-            ContactData contact  = new ContactData().withFirstname("Имя" ).withLastname("Фамилия");
+            ContactData contact  = new ContactData().withFirstname("Name" ).withLastname("LastName")
+                    .withMobilePhone("321456579").withPhoneHome("8755980").withWorkPhone("742389");
             app.contact().create(contact);
             app.goTo().homePage();
         }
         Contacts before = app.contact().all();
         ContactData modifiedContact = before.iterator().next();
-        ContactData contact = new ContactData().withFirstname("ДругоеИмя").withLastname("ДругаяФамилия");
+        ContactData contact = new ContactData().withFirstname("ДругоеИмя").withLastname("ДругаяФамилия")
+                .withMobilePhone("321456579").withPhoneHome("8755980").withWorkPhone("742389");
         app.contact().modify( modifiedContact, contact );
         app.goTo().homePage();
         Contacts after = app.contact().all();
