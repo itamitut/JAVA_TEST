@@ -1,9 +1,8 @@
 package ru.addressbook.model;
 
+import java.io.File;
+
 public class ContactData {
-
-
-
 
     private int id = Integer.MAX_VALUE;
     private  String firstname;
@@ -23,7 +22,7 @@ public class ContactData {
     private  String email3;
     private  String notes;
     private  String group;
-
+    private File photo;
 
     public ContactData withId(int id) {this.id = id;
         return this;}
@@ -78,7 +77,8 @@ public class ContactData {
     public ContactData withGroup(String group) {
         this.group = group;
         return this;}
-
+    public ContactData withPhoto(File photo) {this.photo = photo;
+        return this;}
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -139,5 +139,5 @@ public class ContactData {
         return notes;}
     public String getGroup() {
         return group;}
-
+    public File getPhoto() {return photo;}
 }
