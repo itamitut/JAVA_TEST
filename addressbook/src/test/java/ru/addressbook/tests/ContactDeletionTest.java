@@ -16,7 +16,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class ContactDeletionTest extends TestBase {
     @Test   //(enabled = false)
-    public void contactDeletionTest() {
+    public void contactDeletionTest() throws InterruptedException {
         app.goTo().homePage();
         if(app.contact().all().size() == 0){
             ContactData contact  = new ContactData().withFirstname("Имя" ).withLastname("Фамилия");

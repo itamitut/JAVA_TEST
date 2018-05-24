@@ -13,7 +13,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class ContactModificationTest extends TestBase {
     @Test
-    public void contactModificationTest(){
+    public void contactModificationTest()  {
         app.goTo().homePage();
         if(app.contact().all().size() == 0){
             ContactData contact  = new ContactData().withFirstname("Name" ).withLastname("LastName")
