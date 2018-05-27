@@ -14,11 +14,30 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.5'
 }
 
-test {
+task testGroups(type: Test) {
     useTestNG {
-        suites 'src/test/resources/testng.xml'
+        suites 'src/test/resources/testng-groups.xml'
+    }
+    if(project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if(project.hasProperty('taget')){
+        systemProperty 'target', "${target}"
     }
 }
+
+task testContacts(type: Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-contacts.xml'
+    }
+    if(project.hasProperty('browser')){
+        systemProperty 'browser', "${browser}"
+    }
+    if(project.hasProperty('taget')){
+        systemProperty 'target', "${target}"
+    }
+}
+
 tasks.withType(JavaCompile){
     options.encoding = 'UTF-8'
 }
