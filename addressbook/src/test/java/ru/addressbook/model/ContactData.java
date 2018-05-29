@@ -2,46 +2,96 @@ package ru.addressbook.model;
 
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
+import java.io.File;
+
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
 
 //  @Expose - поля, входящие в json,  @XStreamOmitField - НЕ входящие в XML
+    @Id
+    @Column(name = "id")
     @XStreamOmitField
     private int id = Integer.MAX_VALUE;
+
+
+    @Column(name = "firstname")
     @Expose
     private  String firstname;
+
+    @Transient
     @XStreamOmitField
     private  String middlename;
+
     @Expose
+    @Column(name = "lastname")
     private  String lastname;
+
+    @Transient
     @XStreamOmitField
     private  String nickname;
+
+    @Transient
     @XStreamOmitField
     private  String title;
+
+    @Transient
     @XStreamOmitField
     private  String company;
+
+    @Transient
     @XStreamOmitField
     private  String address;
+
+    @Transient
     @XStreamOmitField
     private  String allPhones;
+
+    @Column(name = "home")
+    @Type(type="text")
     @Expose
     private  String homePhone;
+
+    @Column(name = "mobile")
+    @Type(type="text")
     @Expose
     private  String mobilePhone;
+
+    @Column(name = "work")
+    @Type(type="text")
     @Expose
     private  String workPhone;
+
+    @Transient
     @XStreamOmitField
     private  String allEmails;
+
+    @Transient
     @Expose
     private  String email;
+
+    @Transient
     @XStreamOmitField
     private  String email2;
+
+    @Transient
     @XStreamOmitField
     private  String email3;
+
+    @Transient
     @XStreamOmitField
     private  String notes;
+
+    @Transient
     @XStreamOmitField
     private  String group;
+
+
+    @Column(name = "photo")
+    @Type(type="text")
     @Expose
     private String photo;
 
@@ -98,7 +148,8 @@ public class ContactData {
     public ContactData withGroup(String group) {
         this.group = group;
         return this;}
-    public ContactData withPhoto(String photo) {this.photo = photo;
+    public ContactData withPhoto(File photo) {
+        this.photo = photo.getPath();
         return this;}
     @Override
     public boolean equals(Object o) {
@@ -160,5 +211,6 @@ public class ContactData {
         return notes;}
     public String getGroup() {
         return group;}
-    public String getPhoto() {return photo;}
+    public File getPhoto() {return new File(photo);}
+
 }

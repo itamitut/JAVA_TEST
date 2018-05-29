@@ -3,6 +3,7 @@ package ru.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.addressbook.model.GroupData;
+import ru.addressbook.model.Groups;
 
 import java.util.Set;
 
@@ -25,21 +26,21 @@ public class GroupModificationTest extends TestBase {
     @Test
     public void testGroupModification() {
 
-        Set<GroupData> before = app.group().all();
+        Groups before = app.group().all();
         GroupData modifiedGroup = before.iterator().next();
         GroupData group = new GroupData().withId(modifiedGroup.getId())
-                .withName("test4").withHeader("test2").withFooter("test3");
+                .withName("test1").withHeader("test2").withFooter("test3");
         app.group().modify(group);
-        Set<GroupData> after = app.group().all();
-        assertEquals(after.size(), before.size());
-        before.remove(modifiedGroup);
-        before.add(group);
-/*      Cравнение упорядоченных списков:
+        assertThat(app.group().count(), equalTo(before.size()));
+        Groups after = app.group().all();
+        assertThat(after, equalTo(before.withOut(modifiedGroup).withAdded(group)));
+
+     /*     Cравнение упорядоченных списков:
               Comparator<? super GroupData> byId = Comparator.comparingInt( GroupData::getId );
         before.sort(byId);
         after.sort(byId);
         Assert.assertEquals(before,after);  */
-        assertThat(after, equalTo(before));
+
     }
 
 

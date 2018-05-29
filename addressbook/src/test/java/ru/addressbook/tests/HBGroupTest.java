@@ -11,9 +11,10 @@ import ru.addressbook.model.GroupData;
 
 import java.util.List;
 
-public class HibernateConnectionTest {
+public class HBGroupTest {
 
     private SessionFactory sessionFactory;
+
 
     @BeforeClass
     protected void setUp() throws Exception {
@@ -31,6 +32,7 @@ public class HibernateConnectionTest {
             StandardServiceRegistryBuilder.destroy( registry );
         }
     }
+
     @Test
     public void testHbConnection() {
 

@@ -52,7 +52,7 @@ public class ContactDataGenerator {
         for (int i=0;i<count;i++){
             contacts.add( new ContactData().withLastname(String.format("Фамилия%s", i)).withFirstname(String.format("Имя%s", i)).withMobilePhone(String.format("8903333220%s", i))
             .withPhoneHome(String.format("8495111220%s", i)).withWorkPhone(String.format("8916444550%s", i)).withEmail(String.format("%s%s%s@mail.ru", i,i,i))
-            .withPhoto("src/test/resources/stru.png"));
+            .withPhoto(new File("src/test/resources/stru.png")));
         }
         return contacts;
     }

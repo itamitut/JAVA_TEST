@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Сергей on 11.04.2018.
  */
 public class ApplicationManager {
+    private DbHelper dbHelper;
     private final Properties properties;
     public WebDriver wd;
     private NavigationHelper navigationHelper;
@@ -39,6 +40,8 @@ public class ApplicationManager {
 
     public void init()  throws IOException{
 
+        dbHelper = new DbHelper();
+
         if(Objects.equals( browser, BrowserType.FIREFOX )){
             wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary( "C:/Program Files (x86)/Mozilla FirefoxESR/firefox.exe" ) );
         } else if(Objects.equals( browser, BrowserType.CHROME )){
@@ -55,6 +58,7 @@ public class ApplicationManager {
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
         sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+
     }
 
     public void stop() {
@@ -71,5 +75,5 @@ public class ApplicationManager {
 
     public ContactHelper contact() {return contactHelper; }
 
-
+    public DbHelper db(){ return dbHelper;}
 }
