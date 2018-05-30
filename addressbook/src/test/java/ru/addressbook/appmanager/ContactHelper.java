@@ -8,7 +8,6 @@ import org.testng.Assert;
 import ru.addressbook.model.ContactData;
 import ru.addressbook.model.Contacts;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +40,10 @@ public class ContactHelper extends HelperBase {
   //      attach(By.name("photo"), contactData.getPhoto().getPath());
  //       type(By.name("notes"), contactData.getNotes());
         if(creation){
-            new Select( wd.findElement( By.name("new_group"))).selectByVisibleText("test 1");
-            contactData.getGroup();
+            if (contactData.getGroups().size() >0)
+            new Select( wd.findElement( By.name("new_group")))
+                    .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+
         } else {
             Assert.assertFalse( isElementPresent( By.name("new_group")));
         }

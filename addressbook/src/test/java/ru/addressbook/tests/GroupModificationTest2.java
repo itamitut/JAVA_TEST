@@ -30,7 +30,10 @@ public class GroupModificationTest2 extends TestBase {
     //Проверяем, что в ГУИ тоже сходится
         assertThat( app.group().count(), equalTo( before.size()));
         Groups after = app.db().groups();
-        assertThat( after, equalTo( before.withOut( modifiedGroup ).withAdded( group ) ) );
-
+        assertThat( after, equalTo( before.withOut(modifiedGroup).withAdded(group)));
+    //Cравниваем список групп из ГУИ с UI
+        verifyGroupListInUI();
     }
+
+
 }
