@@ -20,7 +20,7 @@ public class GroupModificationTest2 extends TestBase {
     }
 
     @Test
-    public void testGroupModification() {
+    public void testGroupModification2() {
     //Берем множество групп до и после из БД
         Groups before = app.db().groups();
         GroupData modifiedGroup = before.iterator().next();

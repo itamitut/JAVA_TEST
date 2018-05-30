@@ -12,6 +12,7 @@ import java.io.File;
 public class ContactData {
 
 //  @Expose - поля, входящие в json,  @XStreamOmitField - НЕ входящие в XML
+
     @Id
     @Column(name = "id")
     @XStreamOmitField
@@ -89,7 +90,7 @@ public class ContactData {
     @XStreamOmitField
     private  String group;
 
-
+    @Transient
     @Column(name = "photo")
     @Type(type="text")
     @Expose
