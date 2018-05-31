@@ -94,6 +94,8 @@ public class ContactData {
     @Expose
     private String photo;
 
+
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "address_in_groups", joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "group_id"))
@@ -152,6 +154,10 @@ public class ContactData {
     public ContactData withPhoto(File photo) {
         this.photo = photo.getPath();
         return this;}
+    public ContactData withGroup(GroupData group) {
+        this.groups.add(group);
+        return this;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

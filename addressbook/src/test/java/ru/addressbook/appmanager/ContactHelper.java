@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.addressbook.model.ContactData;
 import ru.addressbook.model.Contacts;
+import ru.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,6 +130,19 @@ public class ContactHelper extends HelperBase {
                 .withPhoneHome(home).withMobilePhone(mobile).withWorkPhone(work)
                 .withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3);
     }
+    // На homepage выбираем группу в селекторе:
+    public void chooseGroup(GroupData group) {
+        new Select( wd.findElement( By.name("group")))
+                .selectByVisibleText(group.getName());
+
+    }
+
+    public void deleteFromGroup(ContactData contact) {
+        selectContactById(contact.getId());
+        wd.findElement(By.cssSelector("input[name=remove]")).click();
+    }
+
+
  /*   private void initContactModificationById(int id){
         WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id )));
         WebElement row = checkbox.findElement(By.xpath("./../.."));
