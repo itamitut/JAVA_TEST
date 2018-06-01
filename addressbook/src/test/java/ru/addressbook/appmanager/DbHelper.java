@@ -43,6 +43,7 @@ public class DbHelper {
     /*    for (ContactData group : result) {
             System.out.println( group );
         }   */
+
         session.getTransaction().commit();
         session.close();
         return  new Contacts(result);

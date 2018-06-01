@@ -52,6 +52,7 @@ public class GroupData {
         return footer;
     }
 
+
     @Override
     public String toString() {
         return "GroupData{" +

@@ -10,7 +10,9 @@ import ru.addressbook.model.Contacts;
 import ru.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Сергей on 12.04.2018.
@@ -83,6 +85,7 @@ public class ContactHelper extends HelperBase {
             String address   = cells.get(3).getText();
             String allEmails = cells.get(4).getText();
             String allPhones = cells.get(5).getText();
+
  //Режем строку по символу новой строки
 //            String[] phones = cells.get(5).getText().split("\n");
             ContactData contact = new ContactData().withId(Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value")))
@@ -140,6 +143,12 @@ public class ContactHelper extends HelperBase {
     public void deleteFromGroup(ContactData contact) {
         selectContactById(contact.getId());
         wd.findElement(By.cssSelector("input[name=remove]")).click();
+    }
+
+    public void addToGroup(GroupData group) {
+        new Select( wd.findElement( By.name("to_group")))
+                .selectByVisibleText(group.getName());
+        wd.findElement( By.cssSelector("input[name=add]")).click();
     }
 
 
