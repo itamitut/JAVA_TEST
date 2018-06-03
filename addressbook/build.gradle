@@ -26,6 +26,9 @@ task testGroups(type: Test) {
     if(project.hasProperty('taget')){
         systemProperty 'target', "${target}"
     }
+    if(project.hasProperty('veryfyUI')){
+        systemProperty 'veryfyUI', "${veryfyUI}"
+    }
 }
 
 task testContacts(type: Test) {
