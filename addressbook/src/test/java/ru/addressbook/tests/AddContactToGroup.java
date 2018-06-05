@@ -1,5 +1,6 @@
 package ru.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.addressbook.model.ContactData;
 import ru.addressbook.model.Contacts;
@@ -10,38 +11,71 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class AddContactToGroup extends TestBase {
-    @Test   //(enabled = false)
-    public void addContactToGroupTest() {
+
+    @BeforeMethod
+    public void preconditions() {
         //Проверяем предусловия и в случае отсутствия создаем:
-        if (app.db().groups().size() == 0) {
+        if (app.db().groups().isEmpty()) {
             app.goTo().groupPage();
-            app.group().create( new GroupData().withName("test 1"));
+            app.group().create( new GroupData().withName( "test 1" ) );
         }
-        if (app.db().contacts().size() == 0) {
-            ContactData contact = new ContactData().withFirstname("Имя").withLastname("Фамилия");
+        if (app.db().contacts().isEmpty()) {
+            ContactData contact = new ContactData().withFirstname( "Имя" ).withLastname( "Фамилия" );
             app.goTo().homePage();
-            app.contact().create(contact);
+            app.contact().create( contact );
         }
-        //Выбираем контакт и группу из DB:
-        ContactData contact = app.db().contacts().iterator().next();
-    //Найдем группу, в которой нет этого контакта и добавим в нее:
+    }
+    @Test
+    public void addContactToGroupTest() {
+
+        ContactData addedContact; // Добавляемый контакт
+        GroupData group = null; //Группа, в которую будем добавлять
+        Groups groupBefore;
+        Groups groupAfter = new Groups();
+        int id; //ID  контакта
+
+        //Если все контакты записан во все группы, удалим из одной:
+        Contacts contacts = app.db().contacts();
         Groups groups = app.db().groups();
-       for (GroupData group : groups) {
-           if (contact.getGroups().contains(group)){ continue;}
+        boolean flag = true;
+        for (ContactData contact : contacts) {
+            if (!contact.getGroups().equals(groups)) flag = false;
+        }
+        if(flag){
+            ContactData con =  app.db().contacts().iterator().next();
+            GroupData grp = con.getGroups().iterator().next();
+            app.goTo().homePage();
+            app.contact().chooseGroup(grp);
+            app.contact().deleteFromGroup(con);
+        }
+        //Найдем контакт, который не записан во все группы:
+        contacts = app.db().contacts();
+        groups = app.db().groups();
+        for (ContactData contact : contacts) {
+           if (contact.getGroups().equals(groups)){ continue;}
+           addedContact = contact;
+            id = addedContact.getId();
+           groupBefore = addedContact.getGroups();
+       // Выберем группу, в которую будем его записывать:
+        for (GroupData gr : groups){
+               if (addedContact.getGroups().contains(gr)){ continue;}
+                group = gr;
+               break;
+           }
+           app.contact().initContactCreation();
            app.goTo().homePage();
-           app.contact().chooseGroup(group);
-           Contacts contactsBefore = app.contact().all();
-    // Здесь бага приложения, приходится делать лишнее действие:
-            app.contact().initContactCreation();
-           app.goTo().homePage();
-           app.contact().selectContactById( contact.getId());
+           app.contact().selectContactById(id);
            app.contact().addToGroup(group);
-           //Проверяем, что в группе появился контакт:
-           app.goTo().homePage();
-           app.contact().chooseGroup(group);
-           Contacts contactsАfter = app.contact().all();
-               assertThat(contactsBefore.withAdded(contact), equalTo(contactsАfter));
-           break;
+            //Ищем удаленный контакт по ID и берем его группы:
+            contacts = app.db().contacts();
+            for (ContactData cont : contacts) {
+                if (cont.getId() == id) {
+                    addedContact = cont;
+                    groupAfter = addedContact.getGroups();
+                    break;
+                }
+            }
+           assertThat(groupBefore.withAdded(group), equalTo(groupAfter));
         }
     }
 }
