@@ -5,10 +5,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import ru.mantis.model.User;
+import ru.mantis.model.Users;
+import ru.mantis.model.UsersData;
 
 import java.util.List;
-import java.util.Set;
 
 public class DbHelper {
 
@@ -21,16 +21,15 @@ public class DbHelper {
         sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
     }
 
-    public List<User> users() {
+    public Users users() {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        List<User> result = (List<User>) session.createQuery( "mantis_user_table").list();
-            for (User user : result) {
+        List<UsersData> result =  session.createQuery( "from mantis_user_table").list();
+            for (UsersData user : result) {
             System.out.println( user );
         }
-
         session.getTransaction().commit();
         session.close();
-        return  result;
+        return new Users(result);
     }
 }

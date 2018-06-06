@@ -13,11 +13,11 @@ public class ChangePasswordTest extends TestBase{
     @Test
     public void changePasswordTest() throws IOException {
 
-        app.init();
-        app.db().users();
+     //   app.init();
+     //   app.db().users();
     //    app.registration().loginAsAdmin();
     //    app.registration().manageUser();
-        app.stop();
+     //   app.stop();
 
     }
 }

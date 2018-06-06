@@ -30,7 +30,7 @@
         <property name="hbm2ddl.auto">validate</property>  <!--Только проверить существование объектов DB-->
 
         <!-- Names the annotated entity class -->
-        <mapping class="ru.mantis.model.User"/>
+        <mapping class="ru.mantis.model.UsersData"/>
 
     </session-factory>
 

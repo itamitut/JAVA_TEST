@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "mantis_user_table")
-public class User {
+public class UsersData {
 
     @Id
     @Column(name = "id")
@@ -22,7 +22,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UsersData{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
@@ -32,7 +32,7 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        UsersData user = (UsersData) o;
         return id == user.id &&
                 Objects.equals( name, user.name );
     }
@@ -53,7 +53,7 @@ public class User {
         return id;
     }
 
-    public User(int id, String name){
+    public UsersData(int id, String name){
         this.id = id;
         this.name = name;
     }
