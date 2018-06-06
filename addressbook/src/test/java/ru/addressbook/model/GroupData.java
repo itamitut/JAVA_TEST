@@ -10,17 +10,17 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@XStreamAlias("group")
+@XStreamAlias("group") //Для XML обозначение модели
 @Entity
-@Table(name = "group_list")
+@Table(name = "group_list")  // Для маппинга Hibernate
 public class GroupData {
 
-    @XStreamOmitField
+    @XStreamOmitField //Исключается из полей XML
     @Id
     @Column(name = "group_id")
     private int id = Integer.MAX_VALUE;
 
-    @Expose
+    @Expose // Включается в JSON
     @Column(name = "group_name")
     private String name;
 
