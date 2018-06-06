@@ -20,7 +20,7 @@ public class FtpHelper {
         ftp.login(app.getProperty("ftp.login"), app.getProperty("ftp.password"));
         ftp.deleteFile(backup);
         ftp.rename(target, backup);
-        ftp.enterLocalPassiveMode();
+        ftp.enterLocalPassiveMode(); //Нужно для локального FTP
         ftp.storeFile(target, new FileInputStream(file));
         ftp.disconnect();
     }
