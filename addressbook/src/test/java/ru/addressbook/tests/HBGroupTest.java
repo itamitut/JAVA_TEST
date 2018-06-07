@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.addressbook.model.GroupData;
 
@@ -16,14 +16,16 @@ public class HBGroupTest {
     private SessionFactory sessionFactory;
 
 
-    @BeforeClass
+    @BeforeMethod
     protected void setUp() throws Exception {
         // A SessionFactory is set up once for an application!
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure() // configures settings from hibernate.cfg.xml
                 .build();
         try {
-            sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
+            sessionFactory = new MetadataSources( registry )
+                    .buildMetadata()
+                    .buildSessionFactory();
         }
         catch (Exception e) {
             e.printStackTrace();
