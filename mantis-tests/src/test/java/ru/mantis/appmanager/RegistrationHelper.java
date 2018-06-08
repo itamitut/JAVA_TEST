@@ -24,7 +24,7 @@ public class RegistrationHelper extends HelperBase {
         wd.get(confirmationLink);
         type(By.name("password"), password);
         type(By.name("password_confirm"), password);
-        click(By.cssSelector("input[value='Update UsersData']"));
+        click(By.cssSelector("input[value='Update User']"));
     }
 
     public void loginAsAdmin() {
@@ -34,9 +34,9 @@ public class RegistrationHelper extends HelperBase {
         click(By.cssSelector("input[value='Login']"));
     }
 
-    public void manageUser() {
+    public void manageUser(String username) {
         wd.findElement(By.cssSelector("a[href='/mantisbt-1.2.20/manage_user_page.php']")).click();
-     //Выбираем юзера:
-        //   wd.findElement(By.linkText("User1")).click();
+        wd.findElement(By.linkText(username)).click();
+        wd.findElement(By.cssSelector("input[value='Reset Password']")).click();
     }
 }

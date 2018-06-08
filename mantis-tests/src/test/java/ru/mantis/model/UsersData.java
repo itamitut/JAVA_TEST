@@ -1,12 +1,13 @@
 package ru.mantis.model;
 
 
-import java.util.Objects;
-
 public class UsersData {
 
     int id;
     String name;
+    String email;
+
+
 
     @Override
     public String toString() {
@@ -16,30 +17,18 @@ public class UsersData {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UsersData user = (UsersData) o;
-        return id == user.id &&
-                Objects.equals( name, user.name );
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash( id, name );
-    }
 
     public String getName() {
         return name;
     }
-
+    public String getEmail() { return email; }
     public int getId() {
         return id;
     }
     public UsersData withId(int id) {this.id = id;
         return this;}
     public UsersData withName(String name) { this.name = name;
+        return this;}
+    public UsersData withEmail(String email) { this.email = email;
         return this;}
 }
