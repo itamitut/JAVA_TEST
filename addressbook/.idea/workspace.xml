@@ -6,7 +6,6 @@
 =======
 >>>>>>> fa3514e7d88299ebe9c6a88e1ba6eb52d572cba4
     <list default="true" id="9573fa0b-924c-49ac-8183-407882c640bc" name="Default" comment="">
-<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_extras_beanshell_bsh_2_0b6.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_testng_testng_6_14_2.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules/Sandbox.iml" afterDir="false" />
@@ -17,9 +16,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/../Sandbox/src/test/java/DistantTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Sandbox/src/test/java/JAVA_TEST/Sandbox/FirstLesson/DistantTest.java" afterDir="false" />
->>>>>>> parent of cdfe18f... commit
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
 <<<<<<< HEAD
@@ -70,52 +66,14 @@
   <component name="FileEditorManager">
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 >>>>>>> fa3514e7d88299ebe9c6a88e1ba6eb52d572cba4
-=======
->>>>>>> e234a6e3ccb801010627b969bce75235e0c6a684
     <leaf>
       <file leaf-file-name="DistantTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../Sandbox/src/test/java/DistantTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-27">
               <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-=======
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DistantTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Sandbox/src/test/java/JAVA_TEST/Sandbox/FirstLesson/DistantTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegistrationTests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/mantis/test/RegistrationTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginTests.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/mantis/test/LoginTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBTestMantis.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/mantis/test/DBTestMantis.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
->>>>>>> parent of cdfe18f... commit
             </state>
           </provider>
         </entry>
@@ -124,11 +82,7 @@
         <entry file="file://$PROJECT_DIR$/../Sandbox/src/main/java/JAVA_TEST/Sandbox/FirstLesson/Point.java">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-<<<<<<< HEAD
               <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
-=======
-              <caret column="30" selection-start-column="30" selection-end-column="30" />
->>>>>>> parent of cdfe18f... commit
             </state>
           </provider>
         </entry>
@@ -136,13 +90,8 @@
       <file leaf-file-name="TestPrime.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../Sandbox/src/test/java/TestPrime.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state>
               <caret lean-forward="true" />
-=======
-            <state relative-caret-position="189">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
->>>>>>> parent of cdfe18f... commit
             </state>
           </provider>
         </entry>
@@ -1625,7 +1574,6 @@
       <window_info id="Designer" order="4" />
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49790794" visible="true" weight="0.17001829" />
       <window_info anchor="bottom" id="Build" order="10" visible="true" weight="0.014644352" />
 =======
@@ -1635,13 +1583,6 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49790794" visible="true" weight="0.17001829" />
       <window_info anchor="bottom" id="Build" order="10" visible="true" weight="0.014644352" />
 >>>>>>> fa3514e7d88299ebe9c6a88e1ba6eb52d572cba4
-=======
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49790794" visible="true" weight="0.17001829" />
-      <window_info anchor="bottom" id="Build" order="10" visible="true" weight="0.014644352" />
-=======
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49790794" visible="true" weight="0.15630713" />
->>>>>>> parent of cdfe18f... commit
->>>>>>> e234a6e3ccb801010627b969bce75235e0c6a684
       <window_info anchor="right" id="Gradle" order="7" weight="0.32906765" />
       <window_info id="Structure" order="1" sideWeight="0.50209206" side_tool="true" weight="0.3299817" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -2075,7 +2016,6 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/mantis/test/DBTestMantis.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
@@ -2112,34 +2052,6 @@
         <state relative-caret-position="-27">
           <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
 >>>>>>> fa3514e7d88299ebe9c6a88e1ba6eb52d572cba4
-=======
-    <entry file="file://$PROJECT_DIR$/../Sandbox/src/test/java/JAVA_TEST/Sandbox/FirstLesson/DistantTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/mantis/test/RegistrationTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/mantis/test/DBTestMantis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mantis-tests/src/test/java/ru/mantis/test/LoginTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
->>>>>>> parent of cdfe18f... commit
->>>>>>> e234a6e3ccb801010627b969bce75235e0c6a684
         </state>
       </provider>
     </entry>
