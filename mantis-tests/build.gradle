@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'idea'
 
 repositories {
     mavenCentral()
@@ -12,8 +13,10 @@ dependencies {
     compile 'commons-net:commons-net:3.4'
     compile 'org.subethamail:subethasmtp:3.1.7'
     compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.4'
-    compile 'mysql:mysql-connector-java:8.0.11'}
+    compile 'mysql:mysql-connector-java:8.0.11'
 
+    compile 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
+}
 test {
     useTestNG {
         suites 'src/test/resources/testng.xml'
@@ -28,8 +31,6 @@ test {
         systemProperty 'veryfyUI', "${veryfyUI}"
     }
 }
-
-
 
 tasks.withType(JavaCompile){
     options.encoding = 'UTF-8'

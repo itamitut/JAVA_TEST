@@ -26,7 +26,7 @@ public class ApplicationManager {
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
-
+    private SoapHelper soapHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -73,11 +73,16 @@ public class ApplicationManager {
         }
         return jamesHelper;
     }
-    
+    public SoapHelper soap(){
+        if(soapHelper == null){
+            soapHelper = new SoapHelper(this);
+        }
+        return soapHelper;
+    }
     public WebDriver getDriver() {
         if(wd == null){
             if(Objects.equals( browser, BrowserType.FIREFOX )){
-                wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary( "C:/Program Files (x86)/Mozilla FirefoxESR/firefox.exe" ) );
+                wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary( "C:/Program Files/Mozilla FirefoxESR/firefox.exe" ) );
             } else if(Objects.equals( browser, BrowserType.CHROME )){
                 wd = new ChromeDriver();
             } else if (Objects.equals( browser, BrowserType.IE )){
