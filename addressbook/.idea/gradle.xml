@@ -6,11 +6,7 @@
         <option name="createEmptyContentRootDirectories" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-<<<<<<< HEAD
         <option name="gradleJvm" value="#JAVA_HOME" />
-=======
-        <option name="gradleHome" value="C:/Gradle/gradle-4.6" />
->>>>>>> a2e4163c7b1fe47c467366b5d6d76d13a68e7d93
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
