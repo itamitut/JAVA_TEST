@@ -43,7 +43,7 @@ public class ApplicationManager {
         dbHelper = new DbHelper();
 
         if(Objects.equals( browser, BrowserType.FIREFOX )){
-            wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary( "C:/Program Files (x86)/Mozilla FirefoxESR/firefox.exe" ) );
+            wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary( "C:/Program Files/Mozilla FirefoxESR/firefox.exe" ) );
         } else if(Objects.equals( browser, BrowserType.CHROME )){
             wd = new ChromeDriver();
         } else if (Objects.equals( browser, BrowserType.IE )){
