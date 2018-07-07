@@ -1,5 +1,6 @@
-package JAVA_TEST.Sandbox.FirstLesson;
+package ru.stqa.sandbox;
 
+import JAVA_TEST.Sandbox.FirstLesson.Point;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

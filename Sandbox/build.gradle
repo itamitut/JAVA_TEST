@@ -1,4 +1,4 @@
-	apply plugin: 'java'
+apply plugin: 'java'
 apply plugin: 'application'
 mainClassName = "JAVA_TEST.Sandbox.FindDistance"
 
@@ -10,3 +10,6 @@ dependencies {
     compile 'org.testng:testng:6.14.2'
 }
 
+test {
+    useTestNG()
+    }
