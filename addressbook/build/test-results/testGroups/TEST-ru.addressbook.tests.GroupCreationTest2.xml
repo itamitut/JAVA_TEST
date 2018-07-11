@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.addressbook.tests.GroupCreationTest2" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-07-11T12:12:37" hostname="DESKTOP-MNQMGLR" time="2.003">
+  <properties/>
+  <testcase name="testGroupCreation2[0](GroupData{id='2147483647', name='test 14'})" classname="ru.addressbook.tests.GroupCreationTest2" time="2.003"/>
+  <system-out><![CDATA[Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+Hibernate: select groupdata0_.group_id as group_id1_2_, groupdata0_.group_footer as group_fo2_2_, groupdata0_.group_header as group_he3_2_, groupdata0_.group_name as group_na4_2_ from group_list groupdata0_
+]]></system-out>
+  <system-err><![CDATA[июл 11, 2018 3:12:38 PM org.hibernate.hql.internal.QueryTranslatorFactoryInitiator initiateService
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+]]></system-err>
+</testsuite>

@@ -1,6 +1,7 @@
 package ru.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -41,13 +43,19 @@ public class ApplicationManager {
     public void init()  throws IOException{
 
         dbHelper = new DbHelper();
-
-        if(Objects.equals( browser, BrowserType.FIREFOX )){
-            wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary( "C:/Program Files (x86)/Mozilla Firefox/firefox.exe" ) );
-        } else if(Objects.equals( browser, BrowserType.CHROME )){
-            wd = new ChromeDriver();
-        } else if (Objects.equals( browser, BrowserType.IE )){
-            wd = new InternetExplorerDriver();
+        if("".equals(properties.getProperty("selenium.server"))) {
+            if (Objects.equals(browser, BrowserType.FIREFOX)) {
+                wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files (x86)/Mozilla Firefox/firefox.exe"));
+            } else if (Objects.equals(browser, BrowserType.CHROME)) {
+                wd = new ChromeDriver();
+            } else if (Objects.equals(browser, BrowserType.IE)) {
+                wd = new InternetExplorerDriver();
+            }
+        }
+        else{
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setBrowserName(browser);
+            wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
         }
         String target = System.getProperty("target","local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
