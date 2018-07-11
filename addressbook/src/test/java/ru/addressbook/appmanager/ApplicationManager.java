@@ -57,7 +57,7 @@ public class ApplicationManager {
             capabilities.setBrowserName(browser);
             wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
         }
-        String target = System.getProperty("target","local");
+        String target = System.getProperty("target","remote");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
         wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         wd.get(properties.getProperty("web.baseUrl"));
