@@ -23,8 +23,8 @@ hs_err_pid*
 .idea/workspace.xml
 *.bin
 *.lock
-*.xml
 *.idx
 *.js
 *.css
 *.html
+addressbook/.gradle/buildOutputCleanup/cache.properties

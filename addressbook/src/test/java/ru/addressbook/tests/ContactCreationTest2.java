@@ -14,7 +14,7 @@ public class ContactCreationTest2 extends TestBase {
     public void contactCreationTest2() {
         Groups groups = app.db().groups();
         app.goTo().homePage();
-        ContactData contact = new ContactData().withFirstname("НовоеИмя").withLastname("НоваяФамилия")
+        ContactData contact = new ContactData().withFirstname("ЕщеИмя").withLastname("ЕщеФамилия")
                 .withMobilePhone("75776579").withPhoneHome("8777770").withWorkPhone("2222289")
                 .inGroup(groups.iterator().next());
         Contacts before = app.db().contacts();
