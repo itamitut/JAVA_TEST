@@ -42,7 +42,10 @@ public class ApplicationManager {
 
     public void init()  throws IOException{
 
+        String target = System.getProperty("target","local");
+        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
         dbHelper = new DbHelper();
+
         if("".equals(properties.getProperty("selenium.server"))) {
             if (Objects.equals(browser, BrowserType.FIREFOX)) {
                 wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files (x86)/Mozilla Firefox/firefox.exe"));
@@ -57,8 +60,6 @@ public class ApplicationManager {
             capabilities.setBrowserName(browser);
             wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")), capabilities);
         }
-        String target = System.getProperty("target","remote");
-        properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
         wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         wd.get(properties.getProperty("web.baseUrl"));
         groupHelper = new GroupHelper(wd);
