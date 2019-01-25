@@ -1,27 +1,37 @@
+import java.io.*;
 import java.sql.*;
 
 public class ConsystConnect {
-    public static void main(String args[]){
+
+
+    public static void main(String args[]) throws ClassNotFoundException, SQLException, IOException {
         try{
 //step1 load the driver class
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
 //step2 create  the connection object
-//            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@(description=(address=(host=ucb-test-db1.tengry.com)(protocol=tcp)(port=1521))(connect_data=(service_name=ucbtst1.tengry.com)(server=SHARED)))","DATAMART","Un45hJaw8j");
             Connection con=DriverManager.getConnection( "jdbc:oracle:thin:@ucb-test-db1.tengry.com:1521/ucbtst1.tengry.com","DATAMART","Un45hJaw8j");
 
 //step3 create the statement object
             Statement stmt=con.createStatement();
 
 //step4 execute query
-            ResultSet rs=stmt.executeQuery("SELECT SURNAME FROM DWAR_SUBSCRIBER_PERSON WHERE MONITORING_FLAG = 1");
-            while(rs.next())
-                System.out.println(rs.getString(1));
+            ResultSet rs=stmt.executeQuery("SELECT SURNAME, FIRST_NAME, PATRONYMIC, BIRTH_DATE,DOCTYPE_NUMBER FROM dwar_person_detail");
+//            while(rs.next())
+            File file = new File("C:\\Users\\user\\Desktop\\CRM_00777_01_NEWLIST_20190125_141118_01.csv");
+//            Writer writer = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "cp1251"));
+            bufferedWriter.write("Тип действия;Внутренний ID субъекта;Фамилия;Имя ;Отчество;Дата рождения;Гражданство;Тип ДУЛ;Серия и номер ДУЛ;Дата выдачи ДУЛ;Предыдущая фамилия;Предыдущий номер и серия паспорта;Флаг согласия на передачу данных, относящихся к банковской тайне;Флаг согласия на передачу данных, относящихся к страховой тайне;Дата согласия на передачу данных, относящихся к банковской тайне;Дата согласия на передачу данных, относящихся к страховой тайне;Дата окончания действия согласия на передачу данных, относящихся к страховой тайне (следующий день после окончания действия согласия);Дата окончания действия согласия на передачу данных, относящихся к банковской тайне (следующий день после окончания действия согласия);Дата окончания действия согласия на передачу данных, относящихся к персональным данным (следующий день после окончания действия согласия);Дата окончания действия согласия на передачу данных, относящихся к кредитной истории (следующий день после окончания действия согласия);Сегмент;Флаг ЗП клиент;Флаг наличие депозита/вклада;Сумма дохода из анкеты с максимальной датой актуальности;Флаг согласия на передачу перс данных в бюро;Флаг мошенничества;Флаг Субъект имеет проданные или реструктурированные договора;Дата регистрации по текущему адресу;Флаг совпадения адреса регистрации и адреса факт. проживания;Образование;Количество детей;Категория должности;Стаж общий;Стаж на последнем месте работы;Количество телефонов;Статус рода занятий;Процентная ставка по кредиту min;Процентная ставка по кредиту max;Срок кредита max;Срок кредита min;Сумма кредита min;Сумма кредита max;Процентная ставка max;Процентная ставка min;Лимит max;Лимит min;Увеличение лимита max;Увеличение лимита min;Операционные затраты на выдачу;Затраты на фондирование;Минимальный доход банка;Дата согласия на обработку персональных данных;Дата согласия на запрос КИ;Флаг отзыва персональных данных;Флаг клиент в черном списке;Флаг наличия предложения страхования кредитов;Флаг наличия предложения страхования жизни;Флаг наличия предложения страхования имущества;Флаг наличия предложения автострахования;Флаг сотрудничества со страховыми;Дата оформления страхования кредитов (последняя);Дата оформления открытого страхования жизни (последняя);Дата оформления страхования имущества (последняя);Дата оформления автострахования (последняя);Дата оформления дебетовой карты (последняя);Дата открытия депозита (последняя);Дата открытия инвестиционного счета (последняя);Доля погашений в грейс период;Количество транзакций в месяц;Доля операций АТМ;Доля операций POS;Средний размер транзакции АТМ;Средний размер транзакции POS;Доля операций по бонусным программам (от POS);SpareDate1;SpareDate2;SpareDate3;SpareDate4;SpareInteger1;SpareInteger2;SpareInteger3;SpareInteger4;SpareDecimal1;SpareDecimal2;SpareDecimal3;SpareDecimal4;SpareString1;SpareString2;SpareString3;SpareString4;SpareString5;SpareString6;SpareString7;SpareString8;SpareDate1\n");
+            for(int i=1;i<101;i++){
+                rs.next();
+                bufferedWriter.write(String.format("1;Test181v0"+i+";%s;%s;%s;%s;RU;1;%s;20060302;;;1;1;20170101;20170101;20221001;20221001;20221001;20221001;2;1;1;70000;1;0;0;20110101;1;1;2;4;60;60;1;1;10,357;15,357;48;24;20000;40000;17,357;12,357;1600;1500;1500;1200;2000;;10000;20170101;20170101;0;0;1;1;1;1;1;20170301;20170301;20170301;20170301;20160101;20170707;20170707;60,981;300;32,313;67,687;1000;2000;3,382;;;;;;;;;;;;;;;;;;;;;\n",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)));
+            }
+            bufferedWriter.close();
+            con.close();
+        }
 
 //step5 close the connection object
-            con.close();
-
-        }catch(Exception e){ System.out.println(e);}
+        catch(Exception e){ System.out.println(e);}
 
     }
 }
